@@ -265,7 +265,7 @@ DISCLAIMER: For quantitative research and backtesting audit purposes only.
               Executing 500-path stochastic Monte Carlo bootstrap...
             </div>
           ) : (
-            <Line data={mcChartData} options={chartOptions} />
+            <Line data={mcChartData} options={mcChartOptions} />
           )}
         </div>
       </div>

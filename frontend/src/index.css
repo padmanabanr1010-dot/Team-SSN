@@ -164,10 +164,10 @@ body {
 /* Tabs Navigation */
 .nav-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.35rem;
   border-bottom: 1px solid var(--border-subtle);
   padding: 0.25rem 0;
-  overflow-x: auto;
 }
 
 .nav-tab-btn {
