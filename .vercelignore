@@ -1,0 +1,5 @@
+# Ignore Python backend to prevent Vercel from building heavy Lambda functions
+backend/
+slides_assets/
+*.pptx
+*.py
