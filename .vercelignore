@@ -1,5 +1,5 @@
-# Ignore Python backend to prevent Vercel from building heavy Lambda functions
-backend/
+# Heavy presentation assets and cache
 slides_assets/
 *.pptx
-*.py
+backend/cache/
+*.log

@@ -76,7 +76,11 @@ def generate_signals(
 
     elif strategy == "ml_ensemble":
         # Machine Learning Predictive Alpha Strategy
-        from sklearn.ensemble import RandomForestClassifier
+        try:
+            from sklearn.ensemble import RandomForestClassifier
+            has_rf = True
+        except ImportError:
+            has_rf = False
         
         # Calculate features strictly on past bars
         rsi_window = int(params.get("rsi_window", 14))

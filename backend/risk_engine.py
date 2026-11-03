@@ -1,7 +1,11 @@
 import numpy as np
 import pandas as pd
-from scipy import stats
 from typing import Dict, List, Any, Optional
+
+try:
+    from scipy import stats
+except ImportError:
+    stats = None
 
 def compute_monte_carlo_simulation(
     equity_series: List[float],
@@ -90,7 +94,11 @@ def compute_var_cvar(
     for conf in confidence_levels:
         alpha = 1.0 - conf
         # 1. Parametric VaR (Normal)
-        z_score = stats.norm.ppf(conf)
+        if stats is not None:
+            z_score = stats.norm.ppf(conf)
+        else:
+            z_table = {0.90: 1.28155, 0.95: 1.64485, 0.975: 1.95996, 0.99: 2.32635, 0.999: 3.09023}
+            z_score = z_table.get(round(conf, 3), 1.64485)
         param_var_pct = -(mu - z_score * sigma)
         param_var_usd = param_var_pct * portfolio_value
 
